@@ -1,0 +1,224 @@
+@charset "UTF-8";
+
+$tab: 768px;
+$pc: 1024px;
+
+@mixin tab {
+  @media (min-width: ($tab)) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media (min-width: ($pc)) {
+    @content;
+  }
+}
+
+body {
+  background-image: url("../img/watercolor-3420425_1920.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  font-size: 16px;
+  font-family: Verdana, sans-serif;
+  box-sizing: border-box;
+    @include pc {
+      // background-image: url("../img/frame-1912137_1920.png");
+      font-size: 18px;
+    }
+}
+
+h1 {
+  font-size: 27px;
+  margin-bottom: 15px;
+    @include pc {
+      font-size: 35px;
+      margin-bottom: 20px;
+    }
+}
+
+h1, h2 {
+  text-align: center;
+  font-family: serif;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 40px;
+    @include pc {
+      font-size: 20px;
+      margin-bottom: 50px;
+    }
+}
+
+.container {
+  width: 70%;
+  margin: 50px auto 0;
+  background: #fff;
+  box-shadow: 2px 2px 5px #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  position: relative;
+    @include pc {
+      width: 400px;
+      padding: 30px;
+      margin: 100px auto 0;
+  }
+}
+
+#question {
+  font-weight: bold;
+  font-size: 18px;
+    @include pc {
+      font-size: 25px;
+    }
+}
+
+#choices {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+    @include pc {
+      margin-bottom: 16px;
+    }
+}
+
+#choices {
+  li {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+      @include pc {
+        padding: 15px;
+        margin-bottom: 30px;
+      }
+        &:hover {
+          background: #f8f8f8;
+        }
+  }
+}
+
+
+#choices > li.correct {
+  background: #84c3ef;
+  border-color: #5aaaef;
+  color: #f8f8f8;
+  font-weight: bold;
+}
+
+#choices > li.correct::after {
+  content: " ... 正解です！";
+}
+
+#choices > li.wrong {
+  background: #f34439;
+  border-color: #f80000;
+  color: #f8f8f8;
+  font-weight: bold;
+}
+
+#choices > li.wrong::after {
+  content: " ... 不正解です。。";
+}
+
+#btn, #result > a {
+  background: #e54247;
+  padding: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 4px 0 #e50000;
+}
+
+
+
+#btn.disabled {
+  background: #ccc;
+  box-shadow: 0 4px 0 #bbb;
+  opacity: 0.7;
+}
+
+#result {
+  position: absolute;
+  width: 250px;
+  background: #fff;
+  padding: 50px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  top: -500px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 3px;
+  text-align: center;
+  transition: 0.6s ease-out;
+    @include pc {
+      width: 400px;
+      padding: 60px 50px;
+    }
+}
+
+#result.show {
+  top: 35%;
+    @include pc {
+      top: 40%;
+    }
+}
+
+#result {
+  p {
+    font-size: 18px;
+      @include pc {
+        font-size: 24px;
+      }
+  }
+    a {
+      display: block;
+      text-decoration: none;
+    }
+}
+
+
+
+
+#start {
+  background: #e54247;
+  padding: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 4px 0 #e50000;
+}
+
+
+#start-ctn {
+  position: absolute;
+  width: 250px;
+  background: #fff;
+  padding: 50px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  border-radius: 3px;
+  text-align: center;
+  // transition: 0.6s ease-out;
+    @include pc {
+      width: 400px;
+      padding: 60px 50px;
+    }
+}
+
+// #start.show {
+//   top: 35%;
+//     @include pc {
+//       top: 40%;
+//     }
+// }

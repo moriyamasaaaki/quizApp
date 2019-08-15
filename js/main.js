@@ -7,15 +7,23 @@
   const result = document.getElementById('result');
   const scoreLabel = document.querySelector('#result > p');
   var container = document.getElementById('container');
-  var h2 = document.getElementById('h2');
+  const start = document.getElementById('start-ctn');
+
 
 
   let num = 0;
   let isAnswered;
   let score = 0;
 
+
+  container.style = 'display: none';
+  start.addEventListener('click', () => {
+    container.style = 'display: block';
+    start.style = 'display: none';
+  });
+
   function shuffle(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
+    for (let i = arr.length - 1; i < 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [arr[j], arr[i]] = [arr[i], arr[j]];
     }
@@ -23,14 +31,18 @@
   }
   // shuffleを実行した戻り値をquizSetにセットする
   const quizList = shuffle([
-    {q: '玉蜀黍', c: ['トウモロコシ', 'タマネギ', 'レタス','キャベツ']},
-    {q: '陸蓮根', c: ['オクラ', 'レンコン', 'ゴボウ','ダイコン']},
-    {q: '竜髭菜', c: ['アスパラガス', 'もやし', 'ホウレンソウ','みょうが']},
-    {q: '檸檬', c: ['レモン', 'ミカン', 'モモ','カボス']},
-    {q: '章魚', c: ['タコ', 'イカ', 'カレイ','マンボウ']},
-    {q: '鰐梨', c: ['アボカド', 'ラフランス', 'ナシ','ドラゴンフルーツ']},
-    // {q: '', c: ['協力', '会社', '双眼鏡','賞賛']},
-    // {q: '', c: ['協力', '会社', '双眼鏡','賞賛']},
+    {q: '玉蜀黍', c: ['トウモロコシ', 'タマネギ', 'レタス']},
+    {q: '陸蓮根', c: ['オクラ', 'レンコン', 'ゴボウ']},
+    {q: '竜髭菜', c: ['アスパラガス', 'もやし', 'ホウレンソウ']},
+    {q: '檸檬', c: ['レモン', 'ミカン', 'モモ']},
+    {q: '章魚', c: ['タコ', 'イカ', 'カレイ']},
+    {q: '鰐梨', c: ['アボカド', 'ラフランス', 'ナシ']},
+    // {q: '金剛石', c: ['ダイヤモンド', 'パール', 'プラチナ']},
+    // {q: '烏賊', c: ['イカ', 'カモメ', 'バッタ']},
+    {q: '西瓜', c: ['スイカ', 'メロン', 'ヘチマ']},
+    {q: '豌豆豆', c: ['エンドウ豆', 'いんげん豆', 'ソラ豆']},
+    {q: '辣韮', c: ['ラッキョウ', 'ニラ', 'パセリ']},
+    {q: '大蒜', c: ['ニンニク', 'ショウガ', 'カブ']},
 
   ]);
 
@@ -45,7 +57,7 @@
       score++;
     } else  {
       li.classList.add('wrong');
-      anser.textContent = `正解は${quizList[num].c[0]}です。`;
+      anser.textContent = `正解は...${quizList[num].c[0]}です。`;
     }
 
     btn.classList.remove('disabled');
@@ -53,7 +65,7 @@
 
   function setQuiz() {
     isAnswered = false;
-    question.textContent = quizList[num].q;
+    question.textContent = `問題:　${quizList[num].q}`;
 
     while (choices.firstChild) {
       choices.removeChild(choices.firstChild);
