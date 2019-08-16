@@ -25,7 +25,6 @@ body {
   font-family: Verdana, sans-serif;
   box-sizing: border-box;
     @include pc {
-      // background-image: url("../img/frame-1912137_1920.png");
       font-size: 18px;
     }
 }
