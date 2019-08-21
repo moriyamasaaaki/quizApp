@@ -120,7 +120,7 @@
 
   function setQuiz() {
     isAnswered = false;
-    question.textContent = `問題:　${quizList[num].q}`;
+    question.textContent = `問題${num+1}:　${quizList[num].q}`;
 
     while (choices.firstChild) {
       choices.removeChild(choices.firstChild);
@@ -162,7 +162,7 @@
 
     if (score === 10) {
       resultMes.textContent = 'パーフェクトです！！';
-    } else if (score > 7) {
+    } else if (score > 6) {
       resultMes.textContent = '優秀です！';
     } else if (score > 1) {
       resultMes.textContent = 'もっと頑張りましょう。';
